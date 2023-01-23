@@ -1,6 +1,6 @@
 package doubled.sellus.api
 
-import doubled.sellus.user.User
+import doubled.sellus.user.domain.User
 
 data class UserView(
     val id: Long,
@@ -13,11 +13,11 @@ data class UserView(
     companion object {
         fun of(domain: User): UserView {
             return UserView(
-                id = domain.getId(),
-                email = domain.getEmail(),
-                nickName = domain.getNickName(),
-                intro = domain.getIntro(),
-                experiences = domain.getExperiences(),
+                id = domain.id,
+                email = domain.email,
+                nickName = domain.nickName,
+                intro = domain.intro,
+                experiences = domain.experiences,
             )
         }
     }

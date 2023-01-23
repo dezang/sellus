@@ -1,13 +1,13 @@
 package doubled.sellus.user
 
 import doubled.sellus.user.adapter.out.persistence.UserDataModel
-import doubled.sellus.user.adapter.out.persistence.UserRepository
+import doubled.sellus.user.adapter.out.persistence.UserJpaRepository
 import org.springframework.stereotype.Service
 import java.time.OffsetDateTime
 
 @Service
 class UserSignUpServiceImpl(
-    val userRepository: UserRepository
+    val userJpaRepository: UserJpaRepository
 ) : UserSignUpService {
     override fun signUp(email: String) {
         val newUser = UserDataModel(
@@ -20,6 +20,6 @@ class UserSignUpServiceImpl(
             createdAt = OffsetDateTime.now(),
             updatedAt = OffsetDateTime.now(),
         )
-        userRepository.save(newUser)
+        userJpaRepository.save(newUser)
     }
 }

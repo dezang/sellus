@@ -1,5 +1,6 @@
 package doubled.sellus.user.adapter.out.persistence
 
+import doubled.sellus.user.domain.UserCareer
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -26,4 +27,13 @@ class CareerDataModel(
     val user: UserDataModel,
     val createdAt: OffsetDateTime,
     var updatedAt: OffsetDateTime,
-)
+) {
+    fun toDomain(): UserCareer {
+        return UserCareer(
+            id = id,
+            startAt = startAt,
+            endAt = endAt,
+            companyName = companyName,
+        )
+    }
+}

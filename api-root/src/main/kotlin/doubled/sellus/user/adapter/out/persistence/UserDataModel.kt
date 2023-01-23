@@ -1,6 +1,6 @@
 package doubled.sellus.user.adapter.out.persistence
 
-import doubled.sellus.user.User
+import doubled.sellus.user.domain.User
 import doubled.sellus.user.UserProfileUpdate
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -24,30 +24,19 @@ data class UserDataModel(
     private var careers: List<CareerDataModel>,
     val createdAt: OffsetDateTime,
     var updatedAt: OffsetDateTime,
-) : User {
-    override fun getId(): Long {
-        return id ?: throw IllegalStateException()
-    }
+) {
+    fun toDomain(): User = User(
+        id = id!!,
+        email = email,
+        nickName = nickName,
+        intro = intro,
+        experiences = getExperiences(),
+        careers = careers.map { it.toDomain() },
+    )
 
-    override fun getEmail(): String {
-        return email
-    }
-
-    override fun getNickName(): String? {
-        return nickName
-    }
-
-    override fun getExperiences(): List<String> {
+    private fun getExperiences(): List<String> {
         if (experiences.isNullOrEmpty()) return emptyList()
         return experiences!!.split(",").map { it.trim() }.toList()
-    }
-
-    override fun getCareers(): List<CareerDataModel> {
-        return careers
-    }
-
-    override fun getIntro(): String? {
-        return intro
     }
 
     fun update(command: UserProfileUpdate) {
