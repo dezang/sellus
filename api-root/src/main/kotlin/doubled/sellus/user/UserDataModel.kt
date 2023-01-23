@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.OneToMany
 import jakarta.persistence.Table
+import java.time.OffsetDateTime
 
 @Entity
 @Table(name = "users")
@@ -19,6 +20,8 @@ data class UserDataModel(
     private var experiences: String?,
     @OneToMany(mappedBy = "user")
     private var careers: List<CareerDataModel>,
+    val createdAt: OffsetDateTime,
+    var updatedAt: OffsetDateTime,
 ) : User {
     override fun getId(): Long {
         return id ?: throw IllegalStateException()
@@ -49,5 +52,6 @@ data class UserDataModel(
         this.nickName = command.nickName
         this.intro = command.intro
         this.experiences = command.experiences?.joinToString()
+        this.updatedAt = OffsetDateTime.now()
     }
 }

@@ -1,6 +1,7 @@
 package doubled.sellus.user
 
 import org.springframework.stereotype.Service
+import java.time.OffsetDateTime
 
 @Service
 class UserSignUpServiceImpl(
@@ -14,6 +15,8 @@ class UserSignUpServiceImpl(
             careers = emptyList(),
             experiences = null,
             intro = null,
+            createdAt = OffsetDateTime.now(),
+            updatedAt = OffsetDateTime.now(),
         )
         userRepository.save(newUser)
     }
