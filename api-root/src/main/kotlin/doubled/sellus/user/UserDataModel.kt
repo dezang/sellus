@@ -8,7 +8,7 @@ import jakarta.persistence.OneToMany
 import jakarta.persistence.Table
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 data class UserDataModel(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
