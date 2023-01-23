@@ -8,7 +8,9 @@ import doubled.sellus.product.domain.Product;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 @RequiredArgsConstructor
 public class InternalProductAdapter implements ProductReader, ProductCreator {
 
