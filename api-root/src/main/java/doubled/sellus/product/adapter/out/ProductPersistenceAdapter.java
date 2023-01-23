@@ -2,6 +2,7 @@ package doubled.sellus.product.adapter.out;
 
 import doubled.sellus.product.application.port.out.CreateProductPort;
 import doubled.sellus.product.application.port.out.LoadProductPort;
+import doubled.sellus.product.domain.CreateProductDomain;
 import doubled.sellus.product.domain.Product;
 import doubled.sellus.product.domain.Schedule;
 import jakarta.persistence.EntityNotFoundException;
@@ -38,7 +39,7 @@ class ProductPersistenceAdapter implements LoadProductPort, CreateProductPort {
     }
 
     @Override
-    public Product createProduct(Product product) {
+    public Product createProduct(CreateProductDomain product) {
         ProductJpaEntity productJpaEntity = productMapper.toProductEntity(product);
         ProductJpaEntity savedProduct = productRepository.save(productJpaEntity);
 

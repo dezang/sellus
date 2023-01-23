@@ -2,6 +2,7 @@ package doubled.sellus.product.application.service;
 
 import doubled.sellus.product.application.port.in.CreateProductUseCase;
 import doubled.sellus.product.application.port.out.CreateProductPort;
+import doubled.sellus.product.domain.CreateProductDomain;
 import doubled.sellus.product.domain.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -13,7 +14,7 @@ public class CreateProductService implements CreateProductUseCase {
     private final CreateProductPort createProductPort;
 
     @Override
-    public Product createProduct(Product product) {
+    public Product createProduct(CreateProductDomain product) {
         return createProductPort.createProduct(product);
     }
 

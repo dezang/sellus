@@ -37,7 +37,7 @@ public class ProductController implements ProductReader, ProductCreator {
     @Nullable
     @Override
     public Product createProduct(@RequestBody @NotNull ProductCreateRequest product) {
-        return createProductUseCase.createProduct(productRestMapper.toProduct(product));
+        return createProductUseCase.createProduct(productRestMapper.toCreateProductDomain(product));
     }
 
 }

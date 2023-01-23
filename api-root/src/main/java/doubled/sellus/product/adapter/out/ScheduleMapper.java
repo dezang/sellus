@@ -1,6 +1,6 @@
 package doubled.sellus.product.adapter.out;
 
-import doubled.sellus.product.domain.Product;
+import doubled.sellus.product.domain.CreateProductDomain;
 import doubled.sellus.product.domain.Schedule;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +16,7 @@ class ScheduleMapper {
             .collect(Collectors.toList());
     }
 
-    public List<ScheduleJpaEntity> toScheduleEntity(Product product, Long productId) {
+    public List<ScheduleJpaEntity> toScheduleEntity(CreateProductDomain product, Long productId) {
         List<Schedule> schedules = product.getSchedules();
         return schedules.stream()
             .map(schedule -> ScheduleJpaEntity.builder()

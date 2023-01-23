@@ -1,16 +1,14 @@
 package doubled.sellus.product.adapter.in.rest.mapper;
 
 import doubled.sellus.product.adapter.in.rest.request.ProductCreateRequest;
-import doubled.sellus.product.domain.Product;
-import doubled.sellus.product.domain.ProductDomain;
+import doubled.sellus.product.domain.CreateProductDomain;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ProductRestMapper {
 
-    public Product toProduct(ProductCreateRequest productCreateRequest) {
-        ProductDomain productDomain = new ProductDomain(null, productCreateRequest.getMentorId(), null, null);
-        return productDomain;
+    public CreateProductDomain toCreateProductDomain(ProductCreateRequest productCreateRequest) {
+        return new CreateProductDomain(productCreateRequest.getMentorId(), productCreateRequest.getSchedules(), productCreateRequest.getPrice());
     }
 
 }
