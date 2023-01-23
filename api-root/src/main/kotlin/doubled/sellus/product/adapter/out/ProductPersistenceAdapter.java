@@ -1,5 +1,6 @@
 package doubled.sellus.product.adapter.out;
 
+import doubled.sellus.product.application.port.out.CreateProductPort;
 import doubled.sellus.product.application.port.out.LoadProductPort;
 import doubled.sellus.product.domain.Product;
 import doubled.sellus.product.domain.Schedule;
@@ -12,7 +13,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Component
-class ProductPersistenceAdapter implements LoadProductPort {
+class ProductPersistenceAdapter implements LoadProductPort, CreateProductPort {
 
     private final ProductRepository productRepository;
     private final ScheduleRepository scheduleRepository;
@@ -34,6 +35,18 @@ class ProductPersistenceAdapter implements LoadProductPort {
         List<ScheduleJpaEntity> scheduleJpaEntities = scheduleRepository.findByProductId(productId).orElseGet(ArrayList::new);
         List<Schedule> schedules = scheduleMapper.mapToDomainEntity(scheduleJpaEntities);
         return productMapper.mapToDomainEntity(productJpaEntity, schedules);
+    }
+
+    @Override
+    public Product createProduct(Product product) {
+        ProductJpaEntity productJpaEntity = productMapper.toProductEntity(product);
+        ProductJpaEntity savedProduct = productRepository.save(productJpaEntity);
+
+        List<ScheduleJpaEntity> scheduleJpaEntities = scheduleMapper.toScheduleEntity(product, savedProduct.getId());
+        scheduleRepository.saveAll(scheduleJpaEntities);
+        List<Schedule> schedules = scheduleMapper.mapToDomainEntity(scheduleJpaEntities);
+
+        return productMapper.mapToDomainEntity(savedProduct, schedules);
     }
 
 }
