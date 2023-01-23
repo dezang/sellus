@@ -8,8 +8,12 @@ class UserSignUpServiceImpl(
 ) : UserSignUpService {
     override fun signUp(email: String) {
         val newUser = UserDataModel(
+            email = email,
             id = null,
-            email = email
+            nickName = null,
+            careers = emptyList(),
+            experiences = null,
+            intro = null,
         )
         userRepository.save(newUser)
     }
