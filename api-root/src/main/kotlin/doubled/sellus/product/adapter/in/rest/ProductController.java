@@ -13,6 +13,8 @@ import org.jetbrains.annotations.Nullable;
 public class ProductController implements ProductReader, ProductCreator {
 
     private final GetProductUseCase getProductUseCase;
+    private final CreateProductUseCase createProductUseCase;
+    private final ProductRestMapper productRestMapper;
 
     @Nullable
     @Override
@@ -29,7 +31,7 @@ public class ProductController implements ProductReader, ProductCreator {
     @Nullable
     @Override
     public Product createProduct(@NotNull ProductCreateRequest product) {
-        return null;
+        return createProductUseCase.createProduct(productRestMapper.toProduct(product));
     }
 
 }
