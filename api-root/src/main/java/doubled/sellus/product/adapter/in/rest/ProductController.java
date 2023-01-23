@@ -15,29 +15,23 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("product")
 @RequiredArgsConstructor
-public class ProductController implements ProductReader, ProductCreator {
+public class ProductController {
 
     private final GetProductUseCase getProductUseCase;
     private final CreateProductUseCase createProductUseCase;
     private final ProductRestMapper productRestMapper;
 
     @GetMapping("/{productId}")
-    @Nullable
-    @Override
     public ResponseEntity<Product> getById(@PathVariable("productId") long id) {
         return new ResponseEntity<>(getProductUseCase.getProductById(id), HttpStatus.OK);
     }
 
     @GetMapping("/mentor/{mentorId}")
-    @Nullable
-    @Override
     public ResponseEntity<Product> getByMentorId(@PathVariable("mentorId") long mentorId) {
         return new ResponseEntity<>(getProductUseCase.getProductByMentorId(mentorId), HttpStatus.OK);
     }
 
     @PostMapping
-    @Nullable
-    @Override
     public ResponseEntity<Product> createProduct(@RequestBody @NotNull ProductCreateRequest product) {
         return new ResponseEntity<>(createProductUseCase.createProduct(productRestMapper.toCreateProductDomain(product)), HttpStatus.OK);
     }
