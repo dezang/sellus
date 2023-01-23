@@ -7,7 +7,6 @@ import doubled.sellus.product.application.port.in.GetProductUseCase;
 import doubled.sellus.product.domain.Product;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
