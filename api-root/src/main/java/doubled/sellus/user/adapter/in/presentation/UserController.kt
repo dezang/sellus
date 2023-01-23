@@ -1,4 +1,4 @@
-package doubled.sellus.api
+package doubled.sellus.user.adapter.`in`.presentation
 
 import doubled.sellus.user.UserProfileService
 import doubled.sellus.user.UserProfileUpdate
@@ -21,7 +21,7 @@ class UserController(
     val userProfileService: UserProfileService,
 ) {
     @PostMapping
-    fun add(@RequestBody request: UserRequest): ResponseEntity<Void> {
+    fun add(@RequestBody request: UserSignupRequest): ResponseEntity<Void> {
         userSignUpService.signUp(request.email)
         return ResponseEntity.ok().build()
     }

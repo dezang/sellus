@@ -1,4 +1,4 @@
-package doubled.sellus.api
+package doubled.sellus.user.adapter.`in`.presentation
 
 import doubled.sellus.user.domain.User
 
