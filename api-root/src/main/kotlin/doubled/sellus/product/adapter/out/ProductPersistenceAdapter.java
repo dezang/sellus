@@ -17,11 +17,13 @@ class ProductPersistenceAdapter implements LoadProductPort {
     private final ProductRepository productRepository;
     private final ScheduleRepository scheduleRepository;
     private final ProductMapper productMapper;
+    private final ScheduleMapper scheduleMapper;
 
     @Override
     public Product loadProductById(Long productId) {
         ProductJpaEntity productJpaEntity = productRepository.findById(productId).orElseThrow(EntityNotFoundException::new);
-        List<Schedule> schedules = scheduleRepository.findByProductId(productId).orElseGet(ArrayList::new);
+        List<ScheduleJpaEntity> scheduleJpaEntities = scheduleRepository.findByProductId(productId).orElseGet(ArrayList::new);
+        List<Schedule> schedules = scheduleMapper.mapToDomainEntity(scheduleJpaEntities);
         return productMapper.mapToDomainEntity(productJpaEntity, schedules);
     }
 
@@ -29,7 +31,8 @@ class ProductPersistenceAdapter implements LoadProductPort {
     public Product loadProductByMentorId(long mentorId) {
         ProductJpaEntity productJpaEntity = productRepository.findByMentorId(mentorId).orElseThrow(EntityNotFoundException::new);
         Long productId = productJpaEntity.getId();
-        List<Schedule> schedules = scheduleRepository.findByProductId(productId).orElseGet(ArrayList::new);
+        List<ScheduleJpaEntity> scheduleJpaEntities = scheduleRepository.findByProductId(productId).orElseGet(ArrayList::new);
+        List<Schedule> schedules = scheduleMapper.mapToDomainEntity(scheduleJpaEntities);
         return productMapper.mapToDomainEntity(productJpaEntity, schedules);
     }
 
