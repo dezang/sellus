@@ -3,9 +3,11 @@ package doubled.sellus.review.adapter.in.internal;
 import doubled.sellus.review.Review;
 import doubled.sellus.review.application.service.GetReviewService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 @RequiredArgsConstructor
 public class InternalReviewAdapter implements ReviewReader {
 
