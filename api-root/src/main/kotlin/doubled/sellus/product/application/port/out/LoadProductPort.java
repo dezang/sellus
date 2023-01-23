@@ -6,4 +6,6 @@ public interface LoadProductPort {
 
     Product loadProductById(Long id);
 
+    Product loadProductByMentorId(long mentorId);
+
 }

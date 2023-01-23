@@ -25,4 +25,12 @@ class ProductPersistenceAdapter implements LoadProductPort {
         return productMapper.mapToDomainEntity(productJpaEntity, schedules);
     }
 
+    @Override
+    public Product loadProductByMentorId(long mentorId) {
+        ProductJpaEntity productJpaEntity = productRepository.findByMentorId(mentorId).orElseThrow(EntityNotFoundException::new);
+        Long productId = productJpaEntity.getId();
+        List<Schedule> schedules = scheduleRepository.findByProductId(productId).orElseGet(ArrayList::new);
+        return productMapper.mapToDomainEntity(productJpaEntity, schedules);
+    }
+
 }

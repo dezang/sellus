@@ -17,4 +17,9 @@ class GetProductService implements GetProductUseCase {
         return loadProductPort.loadProductById(productId);
     }
 
+    @Override
+    public Product getProductByMentorId(long mentorId) {
+        return loadProductPort.loadProductByMentorId(mentorId);
+    }
+
 }

@@ -19,7 +19,7 @@ public class ProductController implements ProductReader {
     @Nullable
     @Override
     public Product getByMentorId(long mentorId) {
-        return null;
+        return getProductUseCase.getProductByMentorId(mentorId);
     }
 
 }

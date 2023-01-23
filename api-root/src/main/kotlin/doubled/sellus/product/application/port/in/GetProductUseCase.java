@@ -6,4 +6,6 @@ public interface GetProductUseCase {
 
     Product getProductById(long productId);
 
+    Product getProductByMentorId(long mentorId);
+
 }

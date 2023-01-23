@@ -6,4 +6,6 @@ import java.util.Optional;
 
 interface ProductRepository extends JpaRepository<ProductJpaEntity, Long> {
 
+    Optional<ProductJpaEntity> findByMentorId(Long mentorId);
+
 }
