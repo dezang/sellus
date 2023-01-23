@@ -8,6 +8,8 @@ import doubled.sellus.product.domain.Product;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -22,22 +24,22 @@ public class ProductController implements ProductReader, ProductCreator {
     @GetMapping("/{productId}")
     @Nullable
     @Override
-    public Product getById(@PathVariable("productId") long id) {
-        return getProductUseCase.getProductById(id);
+    public ResponseEntity<Product> getById(@PathVariable("productId") long id) {
+        return new ResponseEntity<>(getProductUseCase.getProductById(id), HttpStatus.OK);
     }
 
     @GetMapping("/mentor/{mentorId}")
     @Nullable
     @Override
-    public Product getByMentorId(@PathVariable("mentorId") long mentorId) {
-        return getProductUseCase.getProductByMentorId(mentorId);
+    public ResponseEntity<Product> getByMentorId(@PathVariable("mentorId") long mentorId) {
+        return new ResponseEntity<>(getProductUseCase.getProductByMentorId(mentorId), HttpStatus.OK);
     }
 
     @PostMapping
     @Nullable
     @Override
-    public Product createProduct(@RequestBody @NotNull ProductCreateRequest product) {
-        return createProductUseCase.createProduct(productRestMapper.toCreateProductDomain(product));
+    public ResponseEntity<Product> createProduct(@RequestBody @NotNull ProductCreateRequest product) {
+        return new ResponseEntity<>(createProductUseCase.createProduct(productRestMapper.toCreateProductDomain(product)), HttpStatus.OK);
     }
 
 }
