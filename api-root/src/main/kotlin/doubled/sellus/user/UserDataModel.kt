@@ -33,12 +33,8 @@ data class UserDataModel(
     }
 
     override fun getExperiences(): List<String> {
-        val split = experiences?.split(",")
-        return if (split.isNullOrEmpty()) {
-            emptyList()
-        } else {
-            split
-        }
+        if (experiences.isNullOrEmpty()) return emptyList()
+        return experiences!!.split(",").map { it.trim() }.toList()
     }
 
     override fun getCareers(): List<CareerDataModel> {
