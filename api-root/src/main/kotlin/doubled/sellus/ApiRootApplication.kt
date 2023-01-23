@@ -1,4 +1,4 @@
-package doubled.sellus.apiroot
+package doubled.sellus
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
