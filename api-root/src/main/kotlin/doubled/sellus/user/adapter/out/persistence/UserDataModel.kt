@@ -1,5 +1,7 @@
-package doubled.sellus.user
+package doubled.sellus.user.adapter.out.persistence
 
+import doubled.sellus.user.User
+import doubled.sellus.user.UserProfileUpdate
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType

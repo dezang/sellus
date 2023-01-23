@@ -1,5 +1,7 @@
 package doubled.sellus.user
 
+import doubled.sellus.user.adapter.out.persistence.UserDataModel
+import doubled.sellus.user.adapter.out.persistence.UserRepository
 import org.springframework.stereotype.Service
 import java.time.OffsetDateTime
 

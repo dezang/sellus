@@ -1,4 +1,4 @@
-package doubled.sellus.user
+package doubled.sellus.user.adapter.out.persistence
 
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
