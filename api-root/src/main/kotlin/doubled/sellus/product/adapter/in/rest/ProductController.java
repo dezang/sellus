@@ -8,12 +8,10 @@ import doubled.sellus.product.domain.Product;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@RestController("product")
+@RestController
+@RequestMapping("product")
 @RequiredArgsConstructor
 public class ProductController implements ProductReader, ProductCreator {
 
@@ -21,7 +19,7 @@ public class ProductController implements ProductReader, ProductCreator {
     private final CreateProductUseCase createProductUseCase;
     private final ProductRestMapper productRestMapper;
 
-    @GetMapping("{productId}")
+    @GetMapping("/{productId}")
     @Nullable
     @Override
     public Product getById(@PathVariable("productId") long id) {
