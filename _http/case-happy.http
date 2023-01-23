@@ -1,0 +1,66 @@
+###
+# @name 사용자 생성 (회원가입)
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "email": "dezang@dezang.net"
+}
+
+###
+# @name 사용자 조회
+GET http://localhost:8080/users/{{userId}}
+
+###
+# @name 사용자 정보 변경
+PUT http://localhost:8080/users/{{userId}}
+Content-Type: application/json
+
+{
+  "nickName": "황대장",
+  "experiences": ["스타트업", "자바", "백엔드"],
+  "intro": "일단 만나보세요."
+}
+
+###
+# @name 멘토 등록
+POST http://localhost:8080/mentors/register
+Content-Type: application/json
+
+{
+  "userId": {{userId}},
+  "bankAccount": "카카오뱅크 3333 황정욱"
+}
+
+###
+# @name 상품 등록
+POST http://localhost:8080/product
+Content-Type: application/json
+
+{
+  "mentorId": 0,
+  "schedules": [
+    {
+      "location": "Daegu",
+      "meetAt": "2023-01-23T17:57:40Z"
+    }
+  ],
+  "price": 10000
+}
+
+###
+# @name 상품 조회
+GET http://localhost:8080/product/1
+
+
+###
+# @name 주문 요청
+POST http://localhost:8080/orders
+Content-Type: application/json
+
+{
+  "menteeId": 1,
+  "productId": 1,
+  "meetAt": "2023-01-25T20:00:00+09:00",
+  "topics": ["강남맛집","사내연애성공비법"]
+}
