@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ScheduleJpaEntity {
+class ScheduleJpaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
