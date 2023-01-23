@@ -1,4 +1,4 @@
-package doubled.sellus.review.adapter.in.rest;
+package doubled.sellus.review.adapter.in.internal;
 
 import doubled.sellus.review.Review;
 import org.springframework.http.ResponseEntity;
